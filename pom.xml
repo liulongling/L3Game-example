@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <groupId>com.game.example</groupId>
+    <artifactId>L3Game-example</artifactId>
+    <version>2.0.0</version>
+    <name>L3Game</name>
+    <description>游戏服务器</description>
+
+    <modules>
+        <!-- 网络游戏框架 - 业务框架 -->
+        <module>common/common-game</module>
+        <module>common/common-kit</module>
+        <module>common/common-core</module>
+        <module>common/common-tool</module>
+        <!--数据校验模块-->
+        <module>common/common-validation</module>
+
+
+        <!-- 网络游戏框架 - 网络通信 -->
+        <module>net-bolt/bolt-core</module>
+        <!-- Broker （游戏网关） -->
+        <module>net-bolt/bolt-broker-server</module>
+        <!-- BrokerClient （逻辑服） -->
+        <module>net-bolt/bolt-client</module>
+        <!-- 网络游戏框架 : 对外的服务器 （面向真实用户） -->
+        <module>net-bolt/bolt-external</module>
+        <!-- 网通通信 -->
+        <module>external/external-netty</module>
+        <module>external/external-core</module>
+
+        <!-- jprotobuf转换成proto -->
+        <module>tools/jprotobuf</module>
+        <!-- 服务端 示例 -->
+        <module>example/example-server</module>
+        <module>example/example-netty-server</module>
+        <module>example/example-broker-server</module>
+        <module>example/example-client</module>
+        <module>example/example-db</module>
+        <module>example/example-jproto</module>
+
+        <!-- 游戏部件 : 进一步减少开发实践过程中的工作量 -->
+        <module>common/common-micro-kit</module>
+        <!-- 工具：生成分库分表sql -->
+        <module>tools/createsql</module>
+
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- jdk 版本 -->
+        <java.version>17</java.version>
+        <encoding>UTF-8</encoding>
+
+        <!-- 网络库 : https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <netty.version>4.1.101.Final</netty.version>
+        <!--  bolt https://mvnrepository.com/artifact/com.alipay.sofa/bolt  -->
+        <bolt.version>1.6.6</bolt.version>
+        <!-- hessian 格式化 https://mvnrepository.com/artifact/com.caucho/hessian -->
+        <hessian.version>4.0.66</hessian.version>
+        <!--  Jansi 控制台输出彩色文字 https://mvnrepository.com/artifact/org.fusesource.jansi/jansi  -->
+        <jansi.version>2.4.0</jansi.version>
+        <!-- Java文档解析器 https://mvnrepository.com/artifact/com.thoughtworks.qdox/qdox -->
+        <qdox.version>2.0.3</qdox.version>
+
+        <!-- JCTools 是一款对jdk并发数据结构进行增强的并发工具 see http://jctools.github.io/JCTools/ https://mvnrepository.com/artifact/org.jctools/jctools-core -->
+        <jctools-core.version>4.0.1</jctools-core.version>
+
+        <!-- lombok 消除冗长的 Java 代码 https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <lombok.version>1.18.30</lombok.version>
+        <!-- redis internal : https://mvnrepository.com/artifact/org.redisson/redisson -->
+        <redisson.version>3.17.7</redisson.version>
+        <!-- json 解析器 : https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
+        <fastjson.version>2.0.23</fastjson.version>
+
+        <!--  reflectasm 高性能的反射处理 https://mvnrepository.com/artifact/com.esotericsoftware/reflectasm  -->
+        <reflectasm.version>1.11.9</reflectasm.version>
+        <!--  cache2k https://mvnrepository.com/artifact/org.cache2k -->
+        <cache2k.version>1.2.4.Final</cache2k.version>
+        <!--  disruptor https://mvnrepository.com/artifact/com.lmax/disruptor -->
+        <disruptor.version>3.4.4</disruptor.version>
+
+        <!-- JSR-380 bean 验证框架 https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+        <hibernate-validator.version>7.0.4.Final</hibernate-validator.version>
+        <!-- JSR-380 https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+        <!-- JSR-380 https://mvnrepository.com/artifact/org.glassfish/jakarta.el -->
+        <jakarta.el.version>4.0.2</jakarta.el.version>
+
+        <!--Java 实体映射工具-->
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+
+        <!-- temp spring boot https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <spring.version>5.3.27</spring.version>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+        <springboot.version>2.7.0</springboot.version>
+        <!--  junit https://mvnrepository.com/artifact/junit/junit  -->
+        <junit.version>4.13.2</junit.version>
+
+        <!-- slf4j https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <slf4j-api.version>1.7.36</slf4j-api.version>
+        <!-- slf4j https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <logback.version>1.2.11</logback.version>
+
+        <!--jprotobuf是针对Java程序开发一套简易类库，目的是简化java语言对protobuf类库的使用https://mvnrepository.com/artifact/com.baidu/jprotobuf-->
+        <jprotobuf.version>2.4.18</jprotobuf.version>
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <protobuf-java.version>3.22.4</protobuf-java.version>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <hutool.version>5.8.5</hutool.version>
+        <!-- 后期整理需要移除的 -->
+        <snakeyaml.version>1.33</snakeyaml.version>
+
+
+        <!-- http://mvnrepository.com/artifact/com.alibaba/druid -->
+        <druid.version>1.2.21</druid.version>
+        <!--https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-->
+        <pagehelper.boot.version>5.3.2</pagehelper.boot.version>
+        <!-- 分库分表 https://mvnrepository.com/artifact/org.apache.shardingsphere/sharding-jdbc-spring-boot-starter-->
+        <shardingsphere.version>4.1.1</shardingsphere.version>
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter-->
+        <mybatis.version>2.2.2</mybatis.version>
+        <!--https://mvnrepository.com/artifact/mysql/mysql-connector-java-->
+        <mysql.version>8.0.33</mysql.version>
+
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
+        <!-- SpringBoot Web容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
+        <!-- lombok 简化 java 代码 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+        jprotobuf是针对Java程序开发一套简易类库，目的是简化java语言对protobuf类库的使用
+        https://github.com/jhunters/jprotobuf/
+        https://mvnrepository.com/artifact/com.baidu/jprotobuf
+        -->
+        <dependency>
+            <groupId>com.baidu</groupId>
+            <artifactId>jprotobuf</artifactId>
+            <version>${jprotobuf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.protobuf</groupId>
+                    <artifactId>protobuf-java</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- jprotobuf dependency https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf-java.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
+            <!--
+            编译插件
+            mvn compile
+            To compile your test sources, you'll do:
+            mvn test-compile
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <!--                <version>3.11.0</version>-->
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerVersion>${java.version}</compilerVersion>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <!-- maven 3.6.2及之后加上编译参数，可以让我们在运行期获取方法参数名称。 -->
+                    <parameters>true</parameters>
+                    <skip>true</skip>
+                    <!-- JDK9+ with module-info.java -->
+                    <annotationProcessorPaths>
+                        <!-- 实体映射工具 -->
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+
+                        <!-- lombok 消除冗长的 Java 代码 -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <!-- additional annotation processor required as of Lombok 1.18.16 -->
+                        <!-- mapStruct 支持 lombok -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- 打包时跳过单元测试 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <!-- 打包源码 https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-source-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
