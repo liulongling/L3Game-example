@@ -34,9 +34,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.game.example</groupId>
+            <groupId>com.iohao.game</groupId>
             <artifactId>common-core</artifactId>
-            <version>${project.parent.version}</version>
+            <version>17.1.61</version>
         </dependency>
     </dependencies>
 

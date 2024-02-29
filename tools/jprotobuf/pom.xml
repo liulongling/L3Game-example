@@ -14,11 +14,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.game.example</groupId>
+            <groupId>com.iohao.game</groupId>
             <artifactId>common-kit</artifactId>
-            <version>${project.parent.version}</version>
+            <version>17.1.61</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.thoughtworks.qdox/qdox -->
         <dependency>
             <groupId>com.thoughtworks.qdox</groupId>

@@ -13,9 +13,9 @@
     <artifactId>external-core</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.game.example</groupId>
+            <groupId>com.iohao.game</groupId>
             <artifactId>bolt-client</artifactId>
-            <version>${project.parent.version}</version>
+            <version>17.1.61</version>
         </dependency>
     </dependencies>
 </project>

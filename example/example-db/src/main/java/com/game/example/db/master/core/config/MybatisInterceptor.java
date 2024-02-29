@@ -2,7 +2,7 @@ package com.game.example.db.master.core.config;
 
 import com.game.common.utils.BeanUtils;
 import com.game.example.db.master.core.interceptor.MybatisInterceptorConfig;
-import com.iohao.game.common.kit.hutool.HuStrUtil;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
@@ -114,13 +114,13 @@ public class MybatisInterceptor implements Interceptor {
             return paramMap;
         }
         Map<String, Map<String, MybatisInterceptorConfig>> localInterceptorConfigMap = getConfig(obj);
-        if (HuStrUtil.isEmpty(localInterceptorConfigMap)) {
+        if (MapUtils.isEmpty(localInterceptorConfigMap)) {
             return obj;
         }
         Object newObject = obj.getClass().newInstance();
         BeanUtils.copyBean(newObject, obj);
         for (String attrName : localInterceptorConfigMap.keySet()) {
-            if (HuStrUtil.isEmpty(localInterceptorConfigMap.get(attrName))) {
+            if (MapUtils.isEmpty(localInterceptorConfigMap.get(attrName))) {
                 continue;
             }
             MybatisInterceptorConfig interceptorConfig = localInterceptorConfigMap.get(attrName).get(Methods.encrypt.name());
@@ -147,13 +147,13 @@ public class MybatisInterceptor implements Interceptor {
     private Object undo(Object obj) throws Throwable {
         Map<String, Map<String, MybatisInterceptorConfig>> localDecryptConfigMap = getConfig(obj);
         Object result;
-        if (HuStrUtil.isEmpty(localDecryptConfigMap)) {
+        if (MapUtils.isEmpty(localDecryptConfigMap)) {
             return obj;
         }
         result = obj.getClass().newInstance();
         BeanUtils.copyBean(result, obj);
         for (String attrName : localDecryptConfigMap.keySet()) {
-            if (HuStrUtil.isEmpty(localDecryptConfigMap.get(attrName))) {
+            if (MapUtils.isEmpty(localDecryptConfigMap.get(attrName))) {
                 continue;
             }
             MybatisInterceptorConfig interceptorConfig = localDecryptConfigMap.get(attrName).get(Methods.decrypt.name());
