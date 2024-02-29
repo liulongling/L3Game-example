@@ -2,6 +2,7 @@ package com.game.example.logic;
 
 import com.game.example.logic.action.LoginAction;
 import com.game.example.logic.config.GameBarSkeletonConfig;
+import com.game.example.redis.RedissonManager;
 import com.iohao.game.action.skeleton.core.BarSkeleton;
 import com.iohao.game.action.skeleton.core.BarSkeletonBuilder;
 import com.iohao.game.action.skeleton.core.BarSkeletonBuilderParamConfig;
@@ -30,6 +31,7 @@ public class RunServer extends AbstractBrokerClientStartup {
         log.info("时区:" + TimeZone.getDefault());
         BarSkeletonBuilder builder = GameBarSkeletonConfig.createBuilder(config);
 
+        RedissonManager.getInstance().loadRedisCondifg();
         return builder.build();
     }
 

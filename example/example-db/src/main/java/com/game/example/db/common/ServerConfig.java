@@ -25,9 +25,6 @@ public final class ServerConfig {
      */
     public static Map<String, DbInfo> dbInfos = new HashMap<>();
 
-
-    public static volatile ServerInfo serverInfo = null;
-
     /**
      * 玩家数据库数量
      */
